@@ -19,9 +19,14 @@ function G=innerproduct(X,Z)
 
 if (nargin==1) % case when there is only one input (X)
 	%% fill in code here
-
+    [d,n]=size(X);
+    G=X'*X;
 else  % case when there are two inputs (X,Z)
 	%% fill in code here
+    [d,n]=size(X);
+    [d,m]=size(Z);
+    T=X';
+    G=T*Z;
 
 end;
 
