@@ -14,5 +14,18 @@ function w=perceptron(x,y);
 w=zeros(d,1);
 
 %% fill in code here
+while true
+    m=0;
+    r=randperm(n);
+   for i=1:n
+       if (y(r(i))*(w'*x(:,r(i)))<=0)
+           w=perceptronUpdate(x(:,r(i)),y(r(i)),w);
+           m=m+1;
+       end
+   end
+   if(m==0||m==100)
+       break;
+   end; 
+end;
 
 
