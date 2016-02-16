@@ -12,6 +12,7 @@ function w=perceptron(x,y);
 
 [d,n]=size(x);
 w=zeros(d,1);
+counter=0;
 
 %% fill in code here
 while true
@@ -23,7 +24,8 @@ while true
            m=m+1;
        end
    end
-   if(m==0||m==100)
+   counter=counter+1;
+   if(m==0||counter==100)
        break;
    end; 
 end;
