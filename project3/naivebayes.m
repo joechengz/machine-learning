@@ -14,4 +14,13 @@ function [poscond, negcond] = naivebayes(x,y,x1)
 
 [d,n] = size(x);
 %% fill in code here
+[pos,neg] = naivebayesPY(x,y);
 
+[posprob, negprob] = naivebayesPXY(x,y);
+
+posp = prod(posprob(x1==1)) * factorial(sum(x1)) * pos;
+negp = prod(negprob(x1==1)) * factorial(sum(x1)) * neg;
+ 
+
+ poscond = log(posp / (posp + negp));
+ negcond = log(negp / (posp + negp));

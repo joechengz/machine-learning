@@ -18,4 +18,15 @@ y=[y -1 1];
 
 [d,n] = size(x);
 %% fill in code here
+s1 = sum(x);
+%xalpha = sum(x,2);
+posidx = find(y==1);
+negidx = find(y==-1);
+m=sum(sum(x));
+posm = x(:,posidx);
+negm = x(:,negidx);
+posprob = sum(posm,2)/sum(s1(posidx));
+%posprob = factorial(m)*(postheta.^xalpha)/prod(factorial(xalpha));
+negprob = sum(negm,2)/sum(s1(negidx));
+%negprob = factorial(m)*(negtheta.^xalpha)/prod(factorial(xalpha));
 

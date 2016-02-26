@@ -2,11 +2,11 @@
 import sys
 
 def hashfeatures(name):
-  B=128; # number of dimensions in our feature space
+  B=1000; # number of dimensions in our feature space
   v=[0]*B; # initialize the vector to be all-zeros
   name=name.lower() # make all letters lower case
   # hash prefixes & suffixes
-  for m in range(3):
+  for m in range(2):
     featurestring='prefix'+name[0:min(m+1,len(name))]
     v[hash(featurestring) % B]=1
     featurestring='suffix'+name[-1:-min(m+2,len(name)+1):-1]
