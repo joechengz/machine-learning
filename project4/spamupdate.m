@@ -11,3 +11,4 @@ function w=spamupdate(w,email,truth);
 % updated weight vector
 
 % INSERT CODE HERE:
+w = w + truth * email;

@@ -14,4 +14,11 @@ function [loss,gradient,preds]=hinge(w,xTr,yTr,lambda)
 %
 
 [d,n]=size(xTr);
+loss = sum(max((ones(1, n) - w' * xTr .* yTr), 0))...
+       + lambda * (w' * w);
+   
+v = (sign(ones(1, n) - w' * xTr .* yTr) + ones(1,n)) ./ 2;
+gradient = - xTr * (v.* yTr)' + 2 * lambda * w;
+
+preds = sign (w' * xTr);
 

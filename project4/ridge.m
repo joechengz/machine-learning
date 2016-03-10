@@ -12,4 +12,7 @@ function [loss,gradient]=ridge(w,xTr,yTr,lambda)
 % gradient = the gradient at w
 %
 [d,n]=size(xTr);
+s = w' * xTr - yTr;                 
+loss = s * s' + lambda * (w' * w);
+gradient = 2 * xTr * s' + 2 * lambda * w;
 
