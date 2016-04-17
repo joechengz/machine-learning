@@ -16,3 +16,11 @@ function bias=recoverBias(K,yTr,alphas,C);
 
 
 % YOUR CODE 
+
+n = size(yTr(:),1);
+yTr =reshape(yTr, 1, n);
+
+a = alphas-C/2;
+a = sort(a);
+I = find((a>-C/2)&(a < C/2));
+bias = yTr(1,I(1,1))-alphas'.*yTr*K(:,I(1,1)) ;

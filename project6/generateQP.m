@@ -17,7 +17,16 @@ function [H,q,Aeq,beq,lb,ub]=generateQP(K,yTr,C);
 assert(d==n);
 
 % YOUR CODE
+H = (yTr' * yTr) .* K; 
+q = - ones(n, 1);
 
+Aeq = yTr;
+beq = 0;
+
+lb = 0;
+ub = C;
+
+end
 
 
 

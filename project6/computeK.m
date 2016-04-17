@@ -18,4 +18,14 @@ if nargin<2,
 	Z=X;
 end;
 
+if strcmp(kernel_type, 'linear'),
+	K = X' * Z;
+end;
+if strcmp(kernel_type, 'rbf'),
+	K = exp(- param * l2distance(X, Z) .^ 2);
+end;
+if strcmp(kernel_type, 'poly'),
+	K = (X' * Z + 1) .^ param;
+end;
+
 %%YOUR CODE HERE
