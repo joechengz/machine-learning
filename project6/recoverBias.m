@@ -16,7 +16,6 @@ function bias=recoverBias(K,yTr,alphas,C);
 
 
 % YOUR CODE 
-
 n = size(yTr(:),1);
 yTr =reshape(yTr, 1, n);
 

@@ -20,24 +20,28 @@ function D=l2distance(X,Z)
 % YOUR CODE (you can copy it from previous projects)
 if (nargin==1) % case when there is only one input (X)
 	%% fill in code here
-    D = l2distance(X, X);
+    [d,n]=size(X); % dimension of X
+    XT = X';
+    U = sum(XT .* XT, 2);
+    U2 = repmat(U, [1, n]);
+    %V = sum(X' .* X', 2);
+    V2 = repmat(U', [n, 1]);
+    M = XT * X;
+    D = U2 + V2 - 2 * M;
+
 
 else  % case when there are two inputs (X,Z)
 	%% fill in code here
-    [d, n]  = size(X);
-    [~, m]  = size(Z);
-    if (d == 1)
-        xvector = X .* X;
-        zvector = Z .* Z;
-    else
-        xvector = sum(X .* X);
-        zvector = sum(Z .* Z);
-    end
-    S = repmat(xvector(:), 1, m);
-    R = repmat(zvector,    n, 1);
-    G = X' * Z;
-    D = sqrt(abs(S + R - 2 * G));
+    [d,n]=size(X); % dimension of X
+    [~,m]=size(Z); % number of input vectors in Z
+    XT = X';
+    U = sum(XT .* XT, 2);
+    U2 = repmat(U, [1, m]);
+    ZT = Z';
+    V = sum(ZT .* ZT, 2);
+    V2 = repmat(V', [n, 1]);
+    M = XT * Z;
+    D = U2 + V2 - 2 * M;
+end;
 
-end
 
-end

@@ -18,14 +18,26 @@ if nargin<2,
 	Z=X;
 end;
 
-if strcmp(kernel_type, 'linear'),
+[d1, n1] = size(X);        
+[d2, n2] = size(Z);
+if d1 ~= d2 || d1 <= 0 || n1 <= 0 || n2 <= 0,
+	return;
+end;
+
+if strcmp(kernel_type, 'linear') == 1,
 	K = X' * Z;
-end;
-if strcmp(kernel_type, 'rbf'),
-	K = exp(- param * l2distance(X, Z) .^ 2);
-end;
-if strcmp(kernel_type, 'poly'),
+
+
+elseif strcmp(kernel_type, 'poly') == 1,
 	K = (X' * Z + 1) .^ param;
+
+
+
+elseif strcmp(kernel_type, 'rbf') == 1,
+	D = l2distance(X, Z);
+	K = exp((-1) * param * D);
+
+
 end;
 
 %%YOUR CODE HERE
