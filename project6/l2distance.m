@@ -36,7 +36,7 @@ else  % case when there are two inputs (X,Z)
     S=repmat(S1,1,m);
     R1=diag(Z'*Z);
     R=repmat(R1',n,1);
-    G=innerproduct(X,Z);
+    G=X'*Z;Z
     D=sqrt(S+R-2*G);
 end;
 
