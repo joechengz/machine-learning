@@ -16,14 +16,15 @@ function [H,q,Aeq,beq,lb,ub]=generateQP(K,yTr,C);
 [d,n]=size(K);
 assert(d==n);
 
-% YOUR CODE
-yTr =reshape(yTr, 1, n);
-H = (yTr'*yTr).*K;
-q = -ones(n,1);
-Aeq = yTr;
-beq = 0; 
-lb = 0;
-ub = C;
+yTr = yTr(:);
+
+temp = K.*repmat(yTr',n,1);
+H = temp.*repmat(yTr,1,n);
+q = -1*ones(n,1);
+Aeq = yTr';
+beq = 0;
+lb = zeros(n,1);
+ub = C*ones(n,1);
 end
 
 
