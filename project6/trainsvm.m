@@ -51,8 +51,6 @@ disp('Creating classifier ...')
 % YOUR CODE 
 %
 svmclassify = @(xTe) (alphas'.*(yTr')*computeK(ktype,xTr,xTe,kpar) + bias)';
-%svmclassify = @(xTe) computeK(ktype, xTe, xTr, kpar)*(yTr' .* alphas) + bias; 
-%svmclassify = @(x) (alphas'.*yTr*computeK(ktype, xTr, x, kpar) + bias)';
 disp('Computing training error:') % this is optional, but interesting to see
 %
 % YOUR CODE 
