@@ -1,4 +1,4 @@
-function [r,s,ok]=hw07tests()
+%function [r,s,ok]=hw07tests()
 % function [r,s,ok]=hw07tests()
 % Tests the functions from this homework assignment
 

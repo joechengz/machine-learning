@@ -13,4 +13,10 @@ function preds=evalforest(F,xTe)
 %
 
 %% fill in code here
+[~, nt] = size(F);
+for t = 1:nt
+    ypredict(t,:)=evaltree(F{t},xTe); 
+end;
+preds = mode(ypredict); % average over all prediction results
+
 
